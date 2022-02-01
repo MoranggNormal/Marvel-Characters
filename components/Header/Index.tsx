@@ -34,7 +34,7 @@ export default function Header() {
           {routes.map(({ route, name }) => {
             return (
               <Link key={route} href={route} passHref>
-                <Typography variant="h6" component="a" className="link" sx={{ p: 1 }}>
+                <Typography component="a" className="link" sx={{ p: 1 }}>
                   {name}
                 </Typography>
               </Link>
