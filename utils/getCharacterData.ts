@@ -1,6 +1,6 @@
 import marvelData from "../services/marvelData";
 
-const getMarvelData = async (
+const getCharacterData = async (
   route: string,
   limit: number,
   offset: number = 0
@@ -16,4 +16,4 @@ const getMarvelData = async (
   return data;
 };
 
-export default getMarvelData;
+export default getCharacterData;
