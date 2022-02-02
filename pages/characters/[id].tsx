@@ -10,7 +10,6 @@ import Grid from "@mui/material/Grid";
 
 const Character = ({ id }: any) => {
   const [character, setCharacter] = useState(id.data.results[0]);
-  console.log(character);
 
   return (
     <>
