@@ -97,7 +97,7 @@ export const getStaticProps = async () => {
   } catch (error) {
     return {
       props: {
-        error: { error },
+        error: "error",
       },
     };
   }
