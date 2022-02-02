@@ -11,14 +11,15 @@ body {
 .link,
 a {
   text-decoration: none;
-  color: #ff8a65;
+  color: #fff;
   transition: 0.3s;
   border-radius: 0.2em;
 }
 
+.link-active,
 .link:hover {
-  color: #ff7043;
-  background-color: #64646413;
+  color: rgb(223, 221, 221);
+  background-color: #f52e2ee7;
 }
 
 .iron-man-pic {
