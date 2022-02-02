@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { useState, useEffect, useRef } from "react";
 
-import getMarvelData from "../utils/getMarvelData";
+import getMarvelData from "../utils/getCharacterData";
 
 import useOnScreen from "../hooks/useOnScreen";
 
@@ -61,6 +61,7 @@ const Characters: NextPage = ({ data }: any) => {
                   ""
                 }
                 name={name}
+                id={id}
               />
             </Grid>
           );

@@ -8,11 +8,12 @@ import Link from "next/link";
 type character = {
   image: string;
   name: string;
+  id: string | number;
 };
 
-export default function CharacterCard({ image, name }: character) {
+export default function CharacterCard({ id, image, name }: character) {
   return (
-    <Link href="/" passHref>
+    <Link href={`characters/${id}`} passHref>
       <a>
         <Card
           sx={{
