@@ -20,7 +20,9 @@ const Results = ({ data, title }: any) => {
             color="text.link"
             fontWeight={800}
           >
-            Here are some results for: {title}...
+            {results.length > 0
+              ? `Here are some results for: ${title}...`
+              : `There are no results for ${title}`}
           </Typography>
         </Grid>
         {results &&
