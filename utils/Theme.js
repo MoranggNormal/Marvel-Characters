@@ -4,18 +4,19 @@ import { red, grey } from "@mui/material/colors";
 const theme = createTheme({
   palette: {
     primary: {
-      main: grey[50],
-      light: red[300],
-      med: red[600],
-      dark: red[700],
+      main: red[700],
+      light: grey[50],
+      dark: grey[900],
+      contrastText: "#fff",
     },
     secondary: {
-      main: grey[900],
-      dark: grey[900],
+      main: red[600],
       light: grey[300],
+      dark: grey[900],
       contrastText: "#fff",
     },
     text: {
+      light: grey[50],
       link: red[300],
     },
   },

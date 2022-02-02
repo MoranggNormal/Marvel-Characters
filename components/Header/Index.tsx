@@ -23,7 +23,7 @@ export default function Header() {
       <AppBar
         position="sticky"
         elevation={1}
-        sx={{ backgroundColor: "secondary.main" }}
+        sx={{ backgroundColor: "primary.dark" }}
       >
         <Toolbar>
           {routes.map(({ route, name }) => {

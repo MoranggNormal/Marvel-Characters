@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
-
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
@@ -52,7 +51,7 @@ const Home: NextPage = () => {
             <Button
               component="a"
               variant="outlined"
-              sx={{ borderColor: "text.link" }}
+              sx={{ borderColor: "secondary.main", color: "text.light" }}
             >
               Get started
             </Button>

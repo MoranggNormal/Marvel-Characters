@@ -26,13 +26,13 @@ export default function CharacterCard({ id, image, name }: character) {
         >
           <CardHeader
             sx={{
-              backgroundColor: "primary.med",
-              color: "primary.main",
+              backgroundColor: "primary.main",
+              color: "text.light",
             }}
             titleTypographyProps={{ variant: "caption" }}
             title={name}
           />
-          <CardMedia component="img" height="194" image={image} alt={name} />
+          <CardMedia component="img" height="250" image={image} alt={name} />
         </Card>
       </a>
     </Link>
