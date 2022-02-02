@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 
 import { character } from "../models/characterType";
 
-const Characters: NextPage = ({ data }: any) => {
+const Characters: NextPage = ({ data, error }: any) => {
   const [results, setResults] = useState(data);
   const [resultss, setResultss] = useState(data);
   const [currentData, setCurrentData] = useState(25);
@@ -49,7 +49,7 @@ const Characters: NextPage = ({ data }: any) => {
           <SearchByName />
         </Grid>
 
-        {results && results.map(({ id, name, thumbnail }: character) => {
+        {results && !error && results.map(({ id, name, thumbnail }: character) => {
           return (
             <Grid item key={id} xs={12} sm={6} md={4} lg={3}>
               <CharacterCard
