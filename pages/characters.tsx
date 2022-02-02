@@ -6,18 +6,11 @@ import getMarvelData from "../utils/getCharacterData";
 import useOnScreen from "../hooks/useOnScreen";
 
 import CharacterCard from "../components/CharacterCard/Index";
+import SearchByName from "../components/SearchByName/Index";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 
-type character = {
-  id: number;
-  name: string;
-  description: string;
-  thumbnail: {
-    path: string;
-    extension: string;
-  };
-};
+import { character } from "../models/characterType";
 
 const Characters: NextPage = ({ data }: any) => {
   const [results, setResults] = useState(data);
@@ -52,6 +45,10 @@ const Characters: NextPage = ({ data }: any) => {
           px: { xs: 3, md: 8 },
         }}
       >
+        <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
+          <SearchByName />
+        </Grid>
+
         {results.map(({ id, name, thumbnail }: character) => {
           return (
             <Grid item key={id} xs={12} sm={6} md={4} lg={3}>
