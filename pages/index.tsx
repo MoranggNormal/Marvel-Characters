@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useState, useEffect } from "react";
-import marvelData from "../services/marvelData";
+
+
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
@@ -12,24 +12,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Home: NextPage = () => {
-  const [results, setResults] = useState([]);
-
-  /*
-  useEffect(() => {
-    marvelData
-      .get("/characters", {
-        params: {
-          limit: 2,
-        },
-      })
-      .then(({ data }) => {
-        setResults(data);
-      })
-      .catch((e) => console.log(e));
-  }, []);
-
-  */
-
   return (
     <div>
       <Head>
