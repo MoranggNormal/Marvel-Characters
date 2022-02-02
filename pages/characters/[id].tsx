@@ -14,7 +14,7 @@ const Character = ({ id }: any) => {
   return (
     <>
       <Grid container sx={{ p: 4 }}>
-        <Grid item xs={5}>
+        <Grid item xs={12} md={5}>
           <Avatar
             alt={character.name}
             src={`${character.thumbnail.path}/standard_fantastic.${character.thumbnail.extension}`}
@@ -22,7 +22,7 @@ const Character = ({ id }: any) => {
           />
         </Grid>
 
-        <Grid item xs={7}>
+        <Grid item xs={12} md={7}>
           <Typography
             component="h1"
             variant="h4"
