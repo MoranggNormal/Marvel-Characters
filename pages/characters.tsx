@@ -49,35 +49,39 @@ const Characters: NextPage = ({ data, error }: any) => {
           <SearchByName />
         </Grid>
 
-        {results && !error && results.map(({ id, name, thumbnail }: character) => {
-          return (
-            <Grid item key={id} xs={12} sm={6} md={4} lg={3}>
-              <CharacterCard
-                image={
-                  `${thumbnail.path}/standard_fantastic.${thumbnail.extension}` ||
-                  ""
-                }
-                name={name}
-                id={id}
-              />
-            </Grid>
-          );
-        })}
+        {results &&
+          !error &&
+          results.map(({ id, name, thumbnail }: character) => {
+            return (
+              <Grid item key={id} xs={12} sm={6} md={4} lg={3}>
+                <CharacterCard
+                  image={
+                    `${thumbnail.path}/standard_fantastic.${thumbnail.extension}` ||
+                    ""
+                  }
+                  name={name}
+                  id={id}
+                />
+              </Grid>
+            );
+          })}
       </Grid>
       <Grid
         container
         sx={{ width: "100%", display: "flex", justifyContent: "center" }}
       >
-        <Grid item component="div" ref={isAtBottom} sx={{ m: 2 }}>
-          {onScreen && (
-            <Button
-              variant="contained"
-              sx={{ backgroundColor: "primary.med", color: "#fff" }}
-            >
-              Loading more content...
-            </Button>
-          )}
-        </Grid>
+        {!error && (
+          <Grid item component="div" ref={isAtBottom} sx={{ m: 2 }}>
+            {onScreen && (
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: "primary.med", color: "#fff" }}
+              >
+                Loading more content...
+              </Button>
+            )}
+          </Grid>
+        )}
       </Grid>
     </div>
   );
