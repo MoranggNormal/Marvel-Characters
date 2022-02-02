@@ -13,7 +13,7 @@ type character = {
 
 export default function CharacterCard({ id, image, name }: character) {
   return (
-    <Link href={`characters/${id}`} passHref>
+    <Link href={`/characters/${id}`} passHref>
       <a>
         <Card
           sx={{
