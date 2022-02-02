@@ -67,7 +67,7 @@ export const getStaticPaths: GetStaticPaths | any = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { id } = ctx.params;
+  const { id }: any = ctx.params;
 
   const data = await getCharacterById("/characters", id);
 
