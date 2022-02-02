@@ -49,7 +49,7 @@ const Characters: NextPage = ({ data }: any) => {
           <SearchByName />
         </Grid>
 
-        {results.map(({ id, name, thumbnail }: character) => {
+        {results && results.map(({ id, name, thumbnail }: character) => {
           return (
             <Grid item key={id} xs={12} sm={6} md={4} lg={3}>
               <CharacterCard
@@ -97,7 +97,7 @@ export const getStaticProps = async () => {
   } catch (error) {
     return {
       props: {
-        error: { error },
+        error: "error",
       },
     };
   }
