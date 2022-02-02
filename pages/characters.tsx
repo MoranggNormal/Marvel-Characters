@@ -52,7 +52,7 @@ const Characters: NextPage = ({ data }: any) => {
           px: { xs: 3, md: 8 },
         }}
       >
-        {results.map(({ id, name, description, thumbnail }: character) => {
+        {results.map(({ id, name, thumbnail }: character) => {
           return (
             <Grid item key={id} xs={12} sm={6} md={4} lg={3}>
               <CharacterCard

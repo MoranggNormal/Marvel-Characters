@@ -8,10 +8,9 @@ import Link from "next/link";
 type character = {
   image: string;
   name: string;
-  description: string;
 };
 
-export default function CharacterCard({ image, name, description }: character) {
+export default function CharacterCard({ image, name }: character) {
   return (
     <Card
       sx={{
@@ -22,7 +21,7 @@ export default function CharacterCard({ image, name, description }: character) {
     >
       <CardHeader
         sx={{
-          backgroundColor: "primary.dark",
+          backgroundColor: "primary.med",
           color: "primary.main",
           cursor: "default",
         }}
