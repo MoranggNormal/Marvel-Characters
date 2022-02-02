@@ -45,7 +45,7 @@ const Home: NextPage = () => {
             color="text.link"
             fontWeight={800}
           >
-            Discover many Marvel's characters in one click
+            Discover many Marvel&apos;s characters in one click
           </Typography>
           <br />
           <Link href="/characters" passHref>
@@ -71,6 +71,7 @@ const Home: NextPage = () => {
             src={ironMan.src}
             width="700"
             height="500"
+            alt=""
           />
         </Grid>
       </Grid>
