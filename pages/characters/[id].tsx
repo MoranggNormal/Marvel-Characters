@@ -1,23 +1,22 @@
-import { useState } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
-import getMarvelData from "../../utils/getCharacterData";
-import getCharacterById from "../../utils/getCharacterById";
-import Typography from "@mui/material/Typography";
 
 import Avatar from "@mui/material/Avatar";
-
+import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
+import getMarvelData from "../../utils/getCharacterData";
+import getCharacterById from "../../utils/getCharacterById";
+
 const Character = ({ id }: any) => {
-  const [character, setCharacter] = useState(id.data.results[0]);
+  const { name, thumbnail, description } = id.data.results[0];
 
   return (
     <>
       <Grid container sx={{ p: 4 }}>
         <Grid item xs={12} md={5}>
           <Avatar
-            alt={character.name}
-            src={`${character.thumbnail.path}/standard_fantastic.${character.thumbnail.extension}`}
+            alt={name}
+            src={`${thumbnail.path}/standard_fantastic.${thumbnail.extension}`}
             sx={{ width: 350, height: 350 }}
           />
         </Grid>
@@ -30,7 +29,7 @@ const Character = ({ id }: any) => {
             fontWeight={800}
             sx={{ marginTop: "1em" }}
           >
-            {character.name}
+            {name}
           </Typography>
 
           <Typography
@@ -38,7 +37,7 @@ const Character = ({ id }: any) => {
             color="primary.main"
             sx={{ marginTop: "2em" }}
           >
-            {character.description ||
+            {description ||
               "This characters doesnt have a property description yet."}
           </Typography>
         </Grid>

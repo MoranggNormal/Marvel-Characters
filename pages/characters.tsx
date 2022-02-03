@@ -1,15 +1,16 @@
-import type { NextPage } from "next";
+import type { NextPage, GetStaticProps } from "next";
+
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-
-import getMarvelData from "../utils/getCharacterData";
-
 import useOnScreen from "../hooks/useOnScreen";
 
 import CharacterCard from "../components/CharacterCard/Index";
 import SearchBox from "../components/SearchBox/Index";
 import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import LinearProgress from "@mui/material/LinearProgress";
+
+import getMarvelData from "../utils/getCharacterData";
 
 import { character } from "../models/characterType";
 
@@ -17,43 +18,44 @@ const Characters: NextPage = ({ data, error }: any) => {
   const router = useRouter();
 
   const [results, setResults] = useState(data);
-  const [currentData, setCurrentData] = useState(25);
-  const [userType, setUserType] = useState("");
+  const [currentViews, setCurrentViews] = useState(25);
   const [isLoading, setIsLoading] = useState(false);
+  const [userWillSearch, setUserWillSearch] = useState("");
 
   const isAtBottom = useRef<HTMLDivElement>(null);
   const onScreen = useOnScreen(isAtBottom, "300px");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserType(e.target.value);
+    setUserWillSearch(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!userType) return;
+    if (!userWillSearch) return;
 
     setIsLoading(true);
-    router.push(`/search-results/${userType}`);
+    router.push(`/search-results/${userWillSearch}`);
   };
 
   useEffect(() => {
     if (onScreen) {
-      const getNewData = async () => {
-        const data = await getMarvelData("/characters", 25, currentData);
+      const getNewViews = async () => {
+        const data = await getMarvelData("/characters", 25, currentViews);
         const newData = data.data.results;
 
         setResults((prevState: []) => [...prevState.concat(newData)]);
-        setCurrentData((prevState) => prevState + 25);
+        setCurrentViews((prevState) => prevState + 25);
       };
 
-      getNewData();
+      getNewViews();
     }
   }, [onScreen]);
 
   return (
     <div>
       {isLoading && <LinearProgress />}
+
       <Grid
         container
         sx={{
@@ -63,11 +65,23 @@ const Characters: NextPage = ({ data, error }: any) => {
         }}
       >
         <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
-          <SearchBox
-            placeholder={"Search for any Marvel character..."}
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-          />
+          {!error ? (
+            <SearchBox
+              placeholder={"Search for any Marvel character..."}
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+            />
+          ) : (
+            <Typography
+              component="h1"
+              variant="h3"
+              color="text.link"
+              fontWeight={800}
+              sx={{ marginTop: "4em" }}
+            >
+              Whoops, something wrent wrong!
+            </Typography>
+          )}
         </Grid>
 
         {results &&
@@ -87,6 +101,7 @@ const Characters: NextPage = ({ data, error }: any) => {
             );
           })}
       </Grid>
+
       <Grid
         container
         sx={{ width: "100%", display: "flex", justifyContent: "center" }}
@@ -103,7 +118,7 @@ const Characters: NextPage = ({ data, error }: any) => {
 
 export default Characters;
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   try {
     const data = await getMarvelData("/characters", 25);
 

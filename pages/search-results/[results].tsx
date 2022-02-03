@@ -1,10 +1,13 @@
-import { useState } from "react";
 import { GetServerSideProps } from "next";
 
-import getCharacterData from "../../utils/getCharacterData";
-import CharacterCard from "../../components/CharacterCard/Index";
+import { useState } from "react";
+
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import CharacterCard from "../../components/CharacterCard/Index";
+
+import getCharacterData from "../../utils/getCharacterData";
+
 import { character } from "../../models/characterType";
 
 const Results = ({ data, title }: any) => {
