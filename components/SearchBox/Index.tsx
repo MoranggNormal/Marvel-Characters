@@ -10,7 +10,7 @@ type searchProps = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
-export default function SearchByName({
+export default function SearchBox({
   placeholder,
   onSubmit,
   onChange,

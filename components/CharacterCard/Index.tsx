@@ -1,14 +1,13 @@
+import Link from "next/link";
+
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Link from "next/link";
 
 type character = {
-  image: string;
-  name: string;
   id: string | number;
+  name: string;
+  image: string;
 };
 
 export default function CharacterCard({ id, image, name }: character) {
