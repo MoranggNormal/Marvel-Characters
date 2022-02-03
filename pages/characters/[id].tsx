@@ -1,4 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from "next";
+import Head from "next/head";
 
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
@@ -12,6 +13,12 @@ const Character = ({ id }: any) => {
 
   return (
     <>
+      <Head>
+        <title>{name} - PP Challenge</title>
+        <meta name="description" content={description} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Grid container sx={{ p: 4 }}>
         <Grid item xs={12} md={5}>
           <Avatar

@@ -1,4 +1,5 @@
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 
 import { useState } from "react";
 
@@ -15,6 +16,12 @@ const Results = ({ data, title }: any) => {
 
   return (
     <>
+      <Head>
+        <title>Results for: {title} - PP Challenge</title>
+        <meta name="description" content={`Showing results for ${title}`} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <Grid container>
         <Grid item xs={12} sx={{ m: 3, display: "grid", placeItems: "center" }}>
           <Typography

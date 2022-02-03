@@ -1,4 +1,5 @@
 import type { NextPage, GetStaticProps } from "next";
+import Head from "next/head";
 
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
@@ -53,7 +54,16 @@ const Characters: NextPage = ({ data, error }: any) => {
   }, [onScreen]);
 
   return (
-    <div>
+    <>
+      <Head>
+        <title>Characters Parge - PP Challenge</title>
+        <meta
+          name="description"
+          content="Main character page, here you find many characters by scrolling or just searching for it."
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       {isLoading && <LinearProgress />}
 
       <Grid
@@ -112,7 +122,7 @@ const Characters: NextPage = ({ data, error }: any) => {
           </Grid>
         )}
       </Grid>
-    </div>
+    </>
   );
 };
 
