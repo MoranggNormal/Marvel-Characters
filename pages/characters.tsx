@@ -1,24 +1,38 @@
 import type { NextPage } from "next";
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 
 import getMarvelData from "../utils/getCharacterData";
 
 import useOnScreen from "../hooks/useOnScreen";
 
 import CharacterCard from "../components/CharacterCard/Index";
-import SearchByName from "../components/SearchByName/Index";
+import SearchBox from "../components/SearchBox/Index";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
+import LinearProgress from "@mui/material/LinearProgress";
 
 import { character } from "../models/characterType";
-  
+
 const Characters: NextPage = ({ data, error }: any) => {
+  const router = useRouter();
+
   const [results, setResults] = useState(data);
   const [currentData, setCurrentData] = useState(25);
+  const [userType, setUserType] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const isAtBottom = useRef<HTMLDivElement>(null);
-
   const onScreen = useOnScreen(isAtBottom, "300px");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserType(e.target.value);
+  };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    router.push(`/search-results/${userType}`);
+  };
 
   useEffect(() => {
     if (onScreen) {
@@ -36,6 +50,7 @@ const Characters: NextPage = ({ data, error }: any) => {
 
   return (
     <div>
+      {isLoading && <LinearProgress />}
       <Grid
         container
         sx={{
@@ -45,7 +60,11 @@ const Characters: NextPage = ({ data, error }: any) => {
         }}
       >
         <Grid item xs={12} sx={{ display: "flex", justifyContent: "center" }}>
-          <SearchByName />
+          <SearchBox
+            placeholder={"Search for any Marvel character..."}
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+          />
         </Grid>
 
         {results &&
@@ -70,17 +89,10 @@ const Characters: NextPage = ({ data, error }: any) => {
         sx={{ width: "100%", display: "flex", justifyContent: "center" }}
       >
         {!error && (
-          <Grid item component="div" ref={isAtBottom} sx={{ m: 2 }}>
-            {onScreen && (
-              <Button
-                variant="contained"
-                sx={{ backgroundColor: "primary.med", color: "#fff" }}
-              >
-                Loading more content...
-              </Button>
-            )}
+          <Grid item xs={12} component="div" ref={isAtBottom} sx={{ m: 2 }}>
+            {onScreen && <LinearProgress />}
           </Grid>
-        )}
+        )} 
       </Grid>
     </div>
   );
