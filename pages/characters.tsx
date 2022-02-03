@@ -11,10 +11,9 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 
 import { character } from "../models/characterType";
-
+  
 const Characters: NextPage = ({ data, error }: any) => {
   const [results, setResults] = useState(data);
-  const [resultss, setResultss] = useState(data);
   const [currentData, setCurrentData] = useState(25);
 
   const isAtBottom = useRef<HTMLDivElement>(null);
