@@ -27,10 +27,13 @@ const Characters: NextPage = ({ data, error }: any) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserType(e.target.value);
   };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsLoading(true);
 
+    if (!userType) return;
+
+    setIsLoading(true);
     router.push(`/search-results/${userType}`);
   };
 
@@ -92,7 +95,7 @@ const Characters: NextPage = ({ data, error }: any) => {
           <Grid item xs={12} component="div" ref={isAtBottom} sx={{ m: 2 }}>
             {onScreen && <LinearProgress />}
           </Grid>
-        )} 
+        )}
       </Grid>
     </div>
   );
